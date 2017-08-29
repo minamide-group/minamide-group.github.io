@@ -1,0 +1,88 @@
+body {
+ background: powderblue;
+}
+
+
+div.menu {
+ width: 160px;	 
+ float: left;	 
+ margin: 10px 5px;
+ font-size: medium;
+}
+
+div.right {
+ width: auto;	 
+ margin-left : 200px;
+ margin-top : 10px;
+ font-size: 20px;
+}
+
+div.right * {
+ margin: 5px;
+}
+
+div.text {
+    font-size: 12pt;
+    background: #ffffff;
+}
+
+* {
+ margin: 0px;
+ padding: 0;
+}
+
+li.menu {
+ list-style-type: none;
+ list-style-position: outside;
+ margin-bottom: 5px;
+}
+
+h3 {
+ font-size: large;
+}
+
+h4 {
+ font-size: medium;
+}
+
+li.menu a {
+ font-size: medium;
+ width: 150px;	 
+ height: 30px;	
+ display: block;
+ border-width: 1px;
+ border-style: solid;
+ padding: 3px 10px;
+}  
+
+li.menu a:link, li.menu a:visited {
+ color: #000000;
+ background-color: #eeeeee; 
+} 
+
+li.menu a:hover, li.menu a:active {
+ color: #000000;
+ background-color: powderblue;
+} 
+
+div.right ul, div.right ol{
+ margin-left: 20px;
+}
+
+div#header {
+ font-size: large;
+ text-align: center;
+ margin-bottom: 20px;
+}
+
+div.block {
+ margin-left: 10px;
+}
+
+div#lang-menu {
+margin-bottom: 20px;
+}
+
+div.red {
+ color: red;
+}  
