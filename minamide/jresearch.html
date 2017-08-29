@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="ja">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="pages.css"/>
+<title>南出 靖彦</title>
+</head>
+<body>
+<div class="menu">
+<div id="lang-menu">
+[<a href="index.en.html">English</a>/Japanese]
+</div>
+<ul>
+<li class="menu"><a href="index.ja.html">ホーム</a></li>
+<li class="menu"><a href="jresearch.html">研究</a></li>
+<li class="menu"><a href="papers.html">論文</a></li>
+<li class="menu"><a href="activities.html">学会活動等</a></li>
+<li class="menu"><a href="lectures.html">講義</a></li>
+<li class="menu"><a href="lab.html">研究室</a></li> 
+<!--
+<li class="menu"><a href="http://www.cs.tsukuba.ac.jp/">CS専攻</a></li>
+-->
+</ul>
+</div><div class="right">
+研究テーマ：ソフトウェア検証，プログラミング言語，形式言語理論
+<br/><br/>
+<div class="text">
+現在の社会は，ソフトウェアへの依存度をますます高めており，その信頼性の向上が課題となっています．例えば，ウェブに関連したソフトウェアにおいては，プログラムの小さな誤りが，クロスサイトスクリプティングやSQLインジェクションなどの脆弱性の原因となり，情報漏洩などの深刻な問題を起こしています．本研究室では，ソフトウェアの信頼性を高めるための理論や技術を研究しています．特に，形式言語やオートマトンの理論に基づく検証技術の研究に注力しています．
+</div>
+
+<br/><br/>
+
+
+研究プロジェクト
+<ul>
+<li>ウェブソフトウェアの検証
+
+<table>
+<tr><td>
+<div class="text">
+プログラムが出力しうる文字列の集合を文脈自由言語として近似するプログラム解析（文字列解析）を開発し，サーバサイドプログラムの検証に適用しています．以下のような応用があります．
+<ul>
+<li>SQLインジェクション脆弱性，クロスサイトスクリプティング（XSS）脆弱性の検出</li>
+<li>生成されるWebページの妥当性（ウェブページが文法的に正しいか）の検査</li>
+</ul>
+形式言語理論に基づく検査を行うことで様々な検査が可能になっています．
+この解析をスクリプト言語PHPに対して実装し，ソースコード(<a href="phpsa/">PHP String Analyzer</a>)を公開しています．
+</div></td>
+<td>
+<img src="phpsa.png" width="250" class="right" alt="phpsa"/>
+</td>
+</tr><table>
+
+<li>HTML5構文解析仕様からのテストの自動生成
+<table>
+<tr><td>
+<div class="text">
+HTML5の構文解析プログラムの信頼性の向上を目指した研究を行っています．以下の手法によりテストのためのHTML文書の自動生成を実現しています．
+<ol>
+<li>
+仕様記述のための言語を導入し，構文解析仕様を形式化</li>
+<li>形式化した仕様を条件付きプッシュダウンシステムと呼ばれるプッシュダウンオートマトンの拡張へ変換</li>
+<li>条件付きプッシュダウンシステムに対し到達可能性解析を適用することで，テストのためのHTML文書を自動生成</li>
+この手法により自動生成したHTML文書により，ウェブブラウザを検査し，Safari, Firefoxなどのブラウザの非互換性の発見に成功しています．
+</div>
+<td>
+<img src="html5test.png" width="250" class="right" alt="html5test"/>
+</td>
+</tr><table>
+
+
+
+<li>その他
+<ul>
+<li><a href="verification.html">Theorem Proving/Software Verification</a></li>
+</ul>
+<br/>
+</li>
+
+</div>
+</body>
+</html>
