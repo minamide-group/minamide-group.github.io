@@ -1,0 +1,17 @@
+body {
+background: #ddddff;
+}
+pre {
+BORDER-RIGHT: #000000 1px solid; 
+BORDER-LEFT: #000000 1px solid; 
+BORDER-TOP: #000000 1px solid; 
+BORDER-BOTTOM: #000000 1px solid; 
+PADDING-RIGHT: 4px; 
+PADDING-LEFT: 4px; 
+PADDING-TOP: 4px; 
+PADDING-BOTTOM: 4px; 
+background: #ffffff;
+}
+span {
+color: #ff0000
+}

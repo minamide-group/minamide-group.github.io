@@ -1,0 +1,1 @@
+/INSERT INTO bbsdata\(nam,title,comment\) VALUES\('([^'\\]|\\.)*','([^'\\]|\\.)*','([^'\\]|\\.)*'\)|select \* from bbsdata/

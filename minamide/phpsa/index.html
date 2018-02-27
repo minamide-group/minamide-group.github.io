@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="pages.css"/>
+<title>PHP String Analyzer</title>
+</head>
+<body>
+<h2>PHP String Analyzer</h2>
+
+<p>
+PHP string analyzer is a static program analyzer that
+approximates the string output of a PHP program with a 
+context-free grammar. The analyzer can be used to check properties of a PHP program.
+For example, it can be used to validate dynamically 
+generated Web pages by a PHP program.
+</p>
+<ul>
+<li> Download: <a href="phpsa-0.1.1.tar.gz">phpsa-0.1.1.tar.gz</a> (it requires <a href="http://caml.inria.fr/index.en.html" target="_top">O'caml</a> and several O'caml packages for installation.)</li>
+<li> <a href="README">README</a> </li> 
+<li> <a href="examples/index.html">Examples</a></li>
+</ul>
+You can find the basic principle of the analysis in the following paper.
+<ul>
+<li><a href="http://www.score.cs.tsukuba.ac.jp/~minamide/papers/www05.pdf">Static Approximation of Dynamically Generated Web Pages</a>, Y. Minamide, In <i> Proc. of the 14th International World Wide Web Conference </i>, pp. 432-441, 2005. </li>
+</ul>
+The XML validation algorithms used in the analyzer are described in
+the following paper.
+<ul>
+<li> XML Validation for Context-Free Grammars, Y. Minamide, A. Tozawa, In <I> Proc. of The Fourth ASIAN Symposium on Programming Languages and Systems</I>, LNCS 4279, pp. 357-373, 2006. (to appear, <a HREF="../papers/aplas06.pdf">preliminary version</a>)
+</ul>
+
+The preliminary experiments on XHTML validation with the analyzer is reported
+in the following paper. Note the current of the analyzer does not use the 
+validation algorithm described in the paper.
+<ul>
+<li><a href="../papers/otoi-jssst05.pdf">Validating Dynamically Generated XHTML Documents (in Japanese)</a>, N. Otoi and Y. Minamide, </li>
+</ul>
+
+The basic idea of the analyzer comes from <a href="http://www.brics.dk/JSA/" target="_top">Java String Analyzer</a>.
+It is a string analyzer for Java based on regular languages. 
+
+<h3>What is the PHP String analyzer</h3>
+PHP String Analyzer approximates the string output of a program as a 
+context-free grammar. the analyzer takes two inputs: a PHP program and 
+an input specification. <br/>
+
+Let us consider the following program.
+<pre>
+&lt;?php
+for ($i = 0; $i &lt; $n; $i++)
+  $x = "0".$x."1";
+echo $x;
+?&gt;
+</pre>
+For the analysis, we need to specify the initial values of the global 
+variables in the program. The specification is given as follows:
+<pre>
+$x : /abc|xyz/
+$n : int
+</pre>
+The specification /abc|xyz/ is a regular expression representing the set of 
+strings {abc, xyz}. The type 'int' is specified for the variable $n.
+
+The analyzer is executed as follows:
+<pre>
+% phpsa -ispec <a href="examples/example0.ispec">example0.ispec</a> -simplify <a href="examples/example0.php">example0.php</a> 
+</pre>
+where the option -simplify indicates that the analyzer tries to simplify the CFG. <br/>
+
+Then we obtain the following context-free grammar as approximation of the program's string output.
+<pre>
+({<span>$268$</span>, <span>$293$</span>},                                 // variables
+ {<span>$268$</span> -> <span>$293$</span>|0<span>$268$</span>1,<span>$293$</span> -> abc|xyz},      // productions
+ <span>$268$</span>)                                          // start symbol
+</pre>
+This grammar represents the set of strings { 0^nabc1^n | n &gt;= 0} U { 0^nxyz1^n | n &gt;= 0} as we expect.
+
+
+<h3>Authors</h3>
+<ul> 
+<li>PHP String Analyzer is developed by <a href="http://www.score.cs.tsukuba.ac.jp/~minamide">Yasuhiko Minamide</a> and Nobuo Otoi.</li>
+</ul>
+
+<h3>Related projects and works
+<ul>
+<li> <a href="http://pixybox.seclab.tuwien.ac.at/pixy/">Pixy: XSS and SQLI Scanner for PHP Programs</a></li>
+<li> <a href="http://wwwcsif.cs.ucdavis.edu/~wassermg/research/pldi07.pdf">Sound and Precise Analysis of Web Applications for Injection Vulnerabilities</a>, Gary Wassermann and Zhendong Su</li>
+</ul>
+
+
+
+
+
+</body>
+</html>

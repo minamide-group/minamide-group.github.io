@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="pages.css"/>
+<title>Examples: PHP String Analyzer</title>
+</head>
+<body>
+<h4>Examples</h4>
+The followings are the examples in the distribution.
+<ul>
+<li> example1
+<pre>
+% phpsa -ispec <a href="example1.ispec">example1.ispec</a> -simplify <a href="example1.php">example1.php</a> 
+</pre>
+Result: 
+<pre>
+({$316$,$320$,$325$,$334$},                                        // set of nonterminals
+ {$316$ -> $320$1|$334$,$320$ -> $325$|0$316$1,$325$ -> 0abc|0xyz, // productions
+  $334$ -> abc|xyz},
+ $316$)                                                            // start nonterminal
+</pre>
+</li>
+<li> example2 <br/>
+We can check the context-free grammar obtained by the analyzer against
+a regular expression. There are two modes of checking.
+The first mode is to check whether or not L(Prog) is disjoint with L(Spec).
+<pre>
+% phpsa -ispec <a href="example2.ispec">example2.ispec</a> -spec <a href="example2.spec">example2.spec</a> <a href="example2.php">example2.php</a>    
+</pre>
+Result:<br/>
+In this case, the output is not disjoint with L(Spec). Then, the following
+counter example is shown by the analyzer.
+<pre>
+&lt;html&gt;&lt;body&gt;
+&lt;script&gt;&lt;/body&gt;&lt;/html&gt;
+</pre>
+</li>
+<li>example3 <br/>
+This example is about the second mode of checking. It checks whether or not L(Prog) &lt;= L(Spec). For this mode, we supply the option '-inclusion'.
+<pre>
+% phpsa -ispec <a href="example3.ispec">example3.ispec</a> -inclusion -spec <a href="example3.spec">example3.spec</a> <a href="example3e.php">example3e.php</a>    
+</pre>
+Result:
+<pre>
+L(Prog) is a subset of L(Spec).
+</pre>
+</li>
+<li>  validation1 : XHTML validation
+<pre>
+% phpsa -ispec <a href="validation1.ispec">validation1.ispec</a> -validate <a href="validation1.php">validation1.php</a>
+</pre>
+Result:
+<pre>
+Valid
+</pre>
+'xhtml1-transitional.dtd' is used for validation by default.
+You can specify an alternate DTD file by -dtdfile option.
+</li>
+<li>validation2 : XHTML validation
+<pre>
+% phpsa -ispec <a href="validation2.ispec">validation2.ispec</a> -validate <a href="validation2.php">validation2.php</a>    
+</pre>
+The generated document is invalid because the &lt;p&gt; element cannot occur directly under the &lt;ul&gt; element.
+
+result:
+<pre>
+Invalid for &lt;ul&gt;
+&lt;p&gt;                               // This says &lt;p&gt; occurs under &lt;ul&gt;
+...
+Counter example:
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;test&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;ul&gt;&lt;p&gt;
+&lt;/p&gt;&lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</li>
+<li> htmlvalidation1 : HTML validation 
+<pre>
+% phpsa -htmlvalidate <a href="htmlvalidation1.php">htmlvalidation1.php</a>    
+</pre>
+
+Result:
+<pre>
+Valid
+</pre>
+<ul>
+<li>In this example generates a HTML page where &lt;/pgt; is omitted.</li>
+<li>The validation is based on the HTML 4.01 Transitional DTD.</li>
+</ul>
+</li>
+
+<li> htmlvalidation2 : HTML validation
+<pre>
+% phpsa -htmlvalidate <a href="htmlvalidation1.php">htmlvalidation1.php</a>    
+</pre>
+Result:
+<pre>
+Valid
+</pre>
+In this example generates a HTML page where a table where many optional tags are used.
+</li>
+<li> smplbbs : more realistic XHTML validation, SQL query string validation 
+<pre>
+% phpsa -ispec <a href="smplbbs.ispec">smplbbs.ispec</a> -validate <a href="smplbbs.php">smplbbs.php</a>    
+</pre>
+smplbbs is a simple Web-based bulletin board program where
+a string [b]...[/b] in a comment field is translated into &lt;b&gt;...&lt;/b&gt;. 
+<ul>
+ <li> A newline in a comment is translated into a combination of <br /> and 
+      the newline.</li>
+ <li> the file 'samplbbs.html' is an output obtained by running smplbbs.php.</li>
+</ul>
+
+<pre>
+% phpsa -ispec <a href="smplbbs.ispec">smplbbs.ispec</a> -mysql -spec <a href="smplbbs_sql.spec">smplbbs_sql.spec</a> <a href="smplbbs.php">smplbbs.php</a>    
+</pre>
+With -mysql option,  query strings in mysql_query is analyzed instead 
+of the output of a program.
+</li>
+</ul>
+</body>
+</html>
+
+
+
+

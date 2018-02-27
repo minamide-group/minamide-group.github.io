@@ -1,0 +1,13 @@
+//
+// Specification of the variables for input
+//
+$_POST : [/.*/]                   // array of arbitrary strings
+//
+// Specification of output of built-in functions
+//
+mysql_connect : resource
+mysql_select_db : bool
+mysql_query : bool
+mysql_close : bool
+mysql_fetch_array : [/.*/]
+

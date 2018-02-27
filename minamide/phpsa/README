@@ -1,0 +1,63 @@
+-----------------------------------------------------------------------------
+PHP String Analyzer
+-----------------------------------------------------------------------------
+
+PREREQUISITES
+
+* The Objective Caml system
+  If you are using Microsoft Windows, you may need to use the cygwin-based port of O'Caml.
+
+* findlib: O'Caml package manager
+  http://www.ocaml-programming.de/packages/documentation/findlib/
+
+* PXP: The XML Parser for O'Caml 
+  http://www.ocaml-programming.de/programming/pxp.html
+
+* oUnit
+  http://www.xs4all.nl/~mmzeeman/ocaml/
+
+HOW TO BUILD
+
+From the top directory, do:
+	
+	make 
+
+The analyzer 'phpsa' will be built under the 'analyzer' directory.
+
+HOW TO USE
+
+Set the environment variable PHPSA_HOME to this directory. The principle of
+the analyzer is described in the following paper.
+
+http://www.score.cs.tsukuba.ac.jp/~minamide/www05.pdf
+
+Several examples are also given at the 'examples' directory.
+
+LIMITATION
+
+* The analyzer supports only 8-bit characters. 
+  Furthermore, it uses the three characters with the codes 253, 254, and 255 for special purposes. Thus, the analyzer does not properly treat the program that uses these characters. 
+
+* The analyzer supports major features of PHP. However, there are many features which are not supported such as eval. 
+
+* XHTML validation is experimental. 
+  It checks only constraints among the elements in a XHTML document, and ignore attributes. 
+  The content model (E)+ is treated as (E)* by default. To treat (E)+ as (E)+, use the option -xmlstrict.
+  It does not check whether or not the root elements is html.	
+
+* HTML validation is highly experimental. 
+  The validation is based on the HTML 4.01 Transitional DTD.
+  The content model (A)+ is treated as (A)* by default. To treat (E)+ as (E)+, use the option -xmlstrict.
+  It is not permitted to omit the HEAD and BODY elements.
+  It does not check whether or not the root elements is html.	
+   
+Authors:
+- Yasuhiko Minamide 
+  http://www.score.cs.tsukuba.ac.jp/~minamide/
+- Nobuo Otoi
+
+
+
+
+
+ 
