@@ -16,7 +16,8 @@
 <li class="menu"><a href="papers.html">論文</a></li>
 <li class="menu"><a href="activities.html">学会活動等</a></li>
 <li class="menu"><a href="lectures.html">講義</a></li>
-<li class="menu"><a href="../">研究室</a></li> 
+<li class="menu"><a href="../">研究室</a></li>
+<li class="menu"><a href="../">研究生の受け入れ</a></li> 
 </ul>
 </div><div class="right">
 研究テーマ：ソフトウェア検証，プログラミング言語，形式言語理論
@@ -30,6 +31,40 @@
 
 研究プロジェクト
 <ul>
+<li>正規表現マッチングの計算量解析</li>
+<div class="text">
+<p>
+文字列の検索等に広く用いられる正規表現マッチングはその多くがバックトラックに基づくアルゴリズムで実装されており，対象文字列の長さに対して線形時間でマッチングを完了できない場合がある．これを事前に検知するために，マッチングに要する計算量を静的解析する．
+</p>
+<ul>
+<li> 高橋和也, 南出靖彦, 
+拡張正規表現マッチングの計算量解析,
+コンピュータソフトウェア, 38(2), 53-70. 2021.
+(<a href="https://www.jstage.jst.go.jp/article/jssst/38/2/38_2_53/_article/-char/ja/">J-STAGE</a>)，（<a href="https://github.com/minamide-group/regex-matching-analyzer">実装</a>）
+</li>
+</ul>
+</div>
+<br/>
+<li>文字列制約の充足可能性判定</li>
+<div class="text">
+<p>
+  We present a procedure to solve the satisfiability problem of string constraints consisting of (i) string concatenation and rational transductions of string variables restricted to be in the "straight-line" fragment, (ii) regular constraints to string variables, and (iii) integer constraints involving the length of string variables. We represent each atomic string constraint by a streaming string transducer.
+</p>
+<ul>
+<li>釜野雅基, 福田大我, 南出靖彦,
+非決定性 Streaming String Transducer と Parikh オートマトンを用いた文字列制約の充足可能性判定,
+コンピュータソフトウェア, 採録, 2022.
+(<a href="papers/sst-parikh-2022-authors-version.pdf">著者版</a>)
+</li>
+<li>Solving String Constraints with Streaming String Transducers,
+Qizhen Zhu, Hitoshi Akama, Yasuhiko Minamide,
+Journal of Information Processing, Vol. 27, p. 810-821, 2019. 
+  (<a href="https://doi.org/10.2197/ipsjjip.27.810">DOI</a>),
+  (<a href="https://github.com/minamide-group/sst">ソルバ</a>)
+</li>
+</ul>
+</div>
+
 <li>ウェブソフトウェアの検証
 
 <table>
